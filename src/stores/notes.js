@@ -18,6 +18,9 @@ export const useNotesStore = defineStore("notes", () => {
     notes.value.unshift(newNote);
   };
 
+  const getNoteByTitle = (noteTitle) =>
+    notes.value.find((f) => f.title === noteTitle);
+
   const updateNote = (note) => {
     notes.value = notes.value.map((m) => {
       if (m.id === note.id) {
@@ -33,5 +36,12 @@ export const useNotesStore = defineStore("notes", () => {
     notes.value = notes.value.filter((f) => f.id !== id);
   };
 
-  return { notes, notesByCategory, addNote, updateNote, deleteNote };
+  return {
+    notes,
+    notesByCategory,
+    addNote,
+    getNoteByTitle,
+    updateNote,
+    deleteNote,
+  };
 });

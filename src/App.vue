@@ -1,23 +1,10 @@
 <script setup>
-import { useNotesStore } from "./stores/notes";
-
-const notesStore = useNotesStore();
-
-const addNote = () => {
-    notesStore.addNote({
-        title: "New note",
-        body: "This is the body",
-        category: "technology",
-    });
-};
+import ListOfNotes from "./components/ListOfNotes.vue";
 </script>
 
 <template>
     <h1>Home Page</h1>
-    <button type="button" @click="addNote">Add Note</button>
-    <div v-for="note in notesStore.notes" :key="note.id">
-        <p>{{ note.title }}</p>
-    </div>
+    <ListOfNotes />
 </template>
 
 <style scoped></style>
