@@ -11,7 +11,103 @@
 }
 
 html,
-button {
+input,
+textarea {
     font-family: system-ui, sans-serif;
     font-weight: 500;
 }
+
+svg > * {
+    pointer-events: none;
+}
+
+input,
+textarea {
+    padding: 10px;
+    outline: none;
+}
+
+textarea {
+    scrollbar-width: none;
+}
+
+/* Note + */
+.list-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.list-wrapper > * {
+    flex-grow: 1;
+}
+
+.note {
+    border: 1px solid var(--secondary-color);
+    border-radius: 3px;
+    border-width: 2px;
+    display: flex;
+    justify-content: center;
+}
+
+.note:not(.active) input {
+    width: 100%;
+}
+
+.note .controls {
+    display: flex;
+    place-self: center;
+    gap: 3px;
+    padding-right: 10px;
+}
+
+.note .controls svg {
+    cursor: pointer;
+}
+
+.note input,
+.note textarea {
+    pointer-events: none;
+    background: transparent;
+    color: var(--secondary-color);
+    border-color: transparent;
+}
+
+.note input::placeholder,
+.note textarea::placeholder {
+    color: var(--secondary-color);
+}
+
+.note.active {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    position: fixed;
+    inset: 0;
+    background: var(--primary-color);
+    cursor: initial;
+}
+
+.note.active input,
+.note.active textarea {
+    pointer-events: initial;
+}
+
+.note.active textarea {
+    height: 100%;
+    resize: none;
+}
+
+@media (hover: hover) {
+    .note {
+        opacity: 0.8;
+        cursor: pointer;
+    }
+
+    .note:hover {
+        opacity: initial;
+        border-color: var(--accent-color);
+    }
+}
+/* Note - */

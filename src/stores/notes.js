@@ -2,7 +2,32 @@ import { defineStore } from "pinia";
 import { computed, ref } from "vue";
 
 export const useNotesStore = defineStore("notes", () => {
-  const notes = ref([]);
+  const notes = ref([
+    {
+      id: crypto.randomUUID(),
+      title: "",
+      body: "",
+      category: "",
+    },
+    {
+      id: crypto.randomUUID(),
+      title: "",
+      body: "",
+      category: "",
+    },
+    {
+      id: crypto.randomUUID(),
+      title: "",
+      body: "",
+      category: "",
+    },
+    {
+      id: crypto.randomUUID(),
+      title: "",
+      body: "",
+      category: "",
+    },
+  ]);
 
   const notesByCategory = computed((category) =>
     notes.value.filter((f) => f.category === category),
@@ -10,12 +35,13 @@ export const useNotesStore = defineStore("notes", () => {
 
   const addNote = (note) => {
     const newNote = {
-      id: crypto.randomUUID(),
-      title: note.title,
-      body: note.body,
-      category: note.category,
+      id: note.id || crypto.randomUUID(),
+      title: note.title || "",
+      body: note.body || "",
+      category: note.category || "",
     };
     notes.value.unshift(newNote);
+    console.log(newNote);
   };
 
   const getNoteByTitle = (noteTitle) =>
